@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crowdfunding Platform</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+      }
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: #28a745;
+        outline: none;
+      }
+      button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition:
+          background-color 0.3s,
+          transform 0.2s;
+      }
+      button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+      p {
+        color: #555;
+      }
+      #projectsList {
+        list-style-type: none;
+        padding: 0;
+      }
+      #projectsList li {
+        background-color: #f9f9f9;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+        border-left: 5px solid #28a745;
+        transition:
+          background-color 0.3s,
+          transform 0.2s;
+      }
+      #projectsList li:hover {
+        background-color: #e8f5e9;
+        transform: scale(1.01);
+      }
+
+      #notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Crowdfunding Platform</h1>
+
+    <div id="notification">Project Created Successfully!</div>
+
+    <div class="container">
+      <h2>Create a New Project</h2>
+      <input type="text" id="projectName" placeholder="Project Name" />
+      <input
+        type="text"
+        id="projectDescription"
+        placeholder="Project Description"
+      />
+      <input
+        type="number"
+        id="projectGoal"
+        placeholder="Funding Goal (in ICP)"
+      />
+      <button onclick="createProject()">Create Project</button>
+      <p id="createResult"></p>
+    </div>
+
+    <div class="container">
+      <h2>Donate to a Project</h2>
+      <input type="text" id="donorName" placeholder="Your Name" />
+      <input type="text" id="donateProjectName" placeholder="Project Name" />
+      <input type="number" id="donateAmount" placeholder="Amount (in ICP)" />
+      <button onclick="donate()">Donate</button>
+      <p id="donateResult"></p>
+    </div>
+
+    <div class="container">
+      <h2>All Projects</h2>
+      <button onclick="fetchProjects()">Show Projects</button>
+      <ul id="projectsList"></ul>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
